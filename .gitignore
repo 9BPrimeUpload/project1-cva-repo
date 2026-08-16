@@ -1,0 +1,19 @@
+node_modules/
+**/node_modules/
+
+.env
+.env.*
+!.env.example
+
+.output/
+dist/
+build/
+.wrangler/
+
+*.log
+.DS_Store
+Thumbs.db
+
+firebase-service-account.json
+service-account.jsongit add .
+git status --short

@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Users collection - each user can only access their own document
+    match /users/{userId} {
+      allow read, write: if request.auth.uid == userId;
+    }
+
+    // Staff applications collection
+    match /staffApplications/{applicationId} {
+      // Anyone authenticated can submit a new application
+      allow create: if request.auth != null 
+                    && request.auth.token.email_verified == true
+                    && request.resource.data.userId == request.auth.uid;
+      
+      // Users can only read their own applications
+      allow read: if request.auth != null 
+                  && request.auth.uid == resource.data.userId;
+      
+      // Users cannot update or delete their own applications
+      // (Only admin staff can do this via backend, not from client)
+      allow update, delete: if false;
+    }
+
+    // Staff members collection (for future use - admin only)
+    match /staffMembers/{staffId} {
+      allow read, write: if false; // Configure later when admin role system is implemented
+    }
+
+    // Default deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

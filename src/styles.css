@@ -1,0 +1,271 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Crimson Valley Academy design system.
+ * Dark, premium, midnight-navy with cool cyan accents.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-silver: var(--silver);
+  --color-crimson: var(--crimson);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  --background: oklch(0.96 0.02 100);
+  --foreground: oklch(0.06 0.01 260);
+  --surface: oklch(0.97 0.01 100);
+  --surface-2: oklch(0.93 0.02 100);
+  --card: oklch(0.95 0.01 100);
+  --card-foreground: oklch(0.06 0.01 260);
+  --popover: oklch(0.96 0.01 100);
+  --popover-foreground: oklch(0.06 0.01 260);
+  --primary: oklch(0.18 0.16 256);
+  --primary-foreground: oklch(0.98 0.01 230);
+  --secondary: oklch(0.42 0.20 205);
+  --secondary-foreground: oklch(0.98 0.01 250);
+  --muted: oklch(0.9 0.02 100);
+  --muted-foreground: oklch(0.33 0.02 250);
+  --accent: var(--secondary);
+  --accent-foreground: var(--secondary-foreground);
+  --destructive: oklch(0.7 0.11 105);
+  --destructive-foreground: oklch(0.98 0.01 210);
+  --border: oklch(0.8 0.01 210 / 40%);
+  --input: oklch(0.93 0.01 100 / 70%);
+  --ring: var(--primary);
+  --silver: oklch(0.75 0.01 100);
+  --crimson: var(--secondary);
+
+  --gradient-hero: radial-gradient(
+      ellipse 90% 60% at 50% -10%,
+      color-mix(in oklab, var(--primary) 20%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(180deg, oklch(0.96 0.02 100), oklch(0.94 0.02 100));
+  --gradient-accent: linear-gradient(135deg, var(--primary), var(--secondary));
+  --gradient-line: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--primary) 40%, transparent),
+    transparent
+  );
+  --shadow-elegant: 0 24px 60px -24px rgba(10, 15, 40, 0.08);
+  --shadow-glow: 0 0 0 1px rgba(15, 41, 90, 0.08),
+    0 18px 50px -20px rgba(15, 41, 90, 0.12);
+
+  --chart-1: var(--primary);
+  --chart-2: oklch(0.5 0.22 240);
+  --chart-3: oklch(0.94 0.01 100);
+  --chart-4: oklch(0.6 0.22 235);
+  --chart-5: var(--secondary);
+  --sidebar: oklch(0.96 0.02 100);
+  --sidebar-foreground: oklch(0.06 0.01 260);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--secondary);
+  --sidebar-accent-foreground: var(--secondary-foreground);
+  --sidebar-border: oklch(0.8 0.01 210 / 40%);
+  --sidebar-ring: var(--primary);
+}
+
+:root.dark {
+  --background: oklch(0.05 0.03 260);
+  --foreground: oklch(0.96 0.01 250);
+  --surface: oklch(0.1 0.03 260);
+  --surface-2: oklch(0.12 0.03 260);
+  --card: oklch(0.08 0.02 260);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.1 0.02 260);
+  --popover-foreground: oklch(0.96 0.01 250);
+  --primary: oklch(0.18 0.16 256);
+  --primary-foreground: oklch(0.98 0.01 230);
+  --secondary: oklch(0.5 0.22 205);
+  --secondary-foreground: oklch(0.98 0.01 250);
+  --muted: oklch(0.2 0.02 260);
+  --muted-foreground: oklch(0.82 0.01 250);
+  --accent: var(--secondary);
+  --accent-foreground: var(--secondary-foreground);
+  --destructive: oklch(0.74 0.14 90);
+  --destructive-foreground: oklch(0.98 0.01 210);
+  --border: oklch(0.24 0.03 260 / 40%);
+  --input: oklch(0.12 0.02 260 / 60%);
+  --ring: var(--primary);
+  --silver: oklch(0.6 0.02 260);
+  --shadow-elegant: 0 24px 60px -24px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 50px -20px rgba(65, 125, 220, 0.2);
+
+  --chart-1: var(--primary);
+  --chart-2: oklch(0.58 0.22 235);
+  --chart-3: oklch(0.96 0.01 100);
+  --chart-4: oklch(0.45 0.28 240);
+  --chart-5: var(--secondary);
+  --sidebar: oklch(0.08 0.02 260);
+  --sidebar-foreground: oklch(0.96 0.01 250);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--secondary);
+  --sidebar-accent-foreground: var(--secondary-foreground);
+  --sidebar-border: oklch(0.24 0.03 260 / 40%);
+  --sidebar-ring: var(--primary);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 35%, transparent);
+  }
+}
+
+@utility glass {
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--silver) 14%, transparent);
+}
+
+@utility panel {
+  background: linear-gradient(
+    160deg,
+    color-mix(in oklab, var(--surface-2) 85%, transparent),
+    color-mix(in oklab, var(--surface) 92%, transparent)
+  );
+  border: 1px solid color-mix(in oklab, var(--silver) 12%, transparent);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-elegant);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+@utility panel-hover {
+  &:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--primary) 40%, transparent);
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@utility hero-surface {
+  background: radial-gradient(
+      circle at top left,
+      color-mix(in oklab, var(--primary) 22%, transparent) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at top right,
+      color-mix(in oklab, var(--secondary) 16%, transparent) 0%,
+      transparent 34%
+    ),
+    var(--background);
+  background-size: cover;
+  border: none;
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--border) 20%, transparent);
+}
+
+@utility text-gradient {
+  background: linear-gradient(120deg, var(--foreground) 20%, var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility rule-glow {
+  height: 1px;
+  background: var(--gradient-line);
+}
+
+@utility grid-backdrop {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--silver) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--silver) 6%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black, transparent 75%);
+}
+
+@utility fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
